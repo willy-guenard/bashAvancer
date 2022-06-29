@@ -4,10 +4,6 @@ cd ./WDGAS_files;
 
 IFS=' ';
 
-function createDepartementDirectory {
-  mkdir $1;
-}
-
 function moveEmploye {
   mv $1 ./$4/$3_$2.data;
 }
@@ -35,10 +31,7 @@ do
 
     fi
 
-    if [ ! -e  $department ]; then
-      echo "directory $department create";
-      createDepartementDirectory $department;
-    fi
+    mkdir -p $department;
     moveEmploye $file $firstName $lastName $department;
   fi
 done
